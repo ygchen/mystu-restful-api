@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <sql-query name="update_user_logo" >
+    	update stu_userprofile set profile_pic=? where user_id=?
+    </sql-query>
+    <sql-query name="update_user_cover" >
+    	update stu_userprofile set cover_image=? where user_id=?
+    </sql-query>
+   <sql-query name="update_user_status">
+    	update stu_userprofile set quotes=? where user_id=?
+    </sql-query>
+    
+    <sql-query name="get_user_logo" >
+    	select profile_pic from stu_userprofile where user_id=?
+    </sql-query>
+    <sql-query name="get_user_cover" >
+    	select cover_image from stu_userprofile where user_id=?
+    </sql-query>
+   <sql-query name="get_user_status">
+    	select quotes from stu_userprofile where user_id=?
+    </sql-query>
+   
+   
+</hibernate-mapping>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:conf/*.properties</value>
+			</list>
+		</property>
+	</bean>			
+	<import resource="springs-jdbc.xml" />
+	
+	<bean id="userDao"
+		class="edu.stu.user.dao.impl.UserDaoImpl" parent="daoSupport"/>		
+		
+	<bean id="userService" class="edu.stu.user.service.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao"/>
+		<property name="staticFileService" ref="staticFileService"/>
+		<property name="defaultCoverFolder"><value>${defaultCoverFolder}</value></property>
+	</bean>	
+	
+
+	<bean id="staticFileService" class=" edu.stu.generic.impl.StaticFileServiceImpl">				
+		<property name="folder"><value>${static_file_base_store_path}</value></property>
+		<property name="serverUrl"><value>${static_file_server}</value> </property>
+	</bean>	
+</beans>

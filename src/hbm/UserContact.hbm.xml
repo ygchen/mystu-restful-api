@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--
+id bigint(20) NOT NULL AUTO_INCREMENT,
+  user_id int(11) DEFAULT NULL,
+  email_stu varchar(50) DEFAULT NULL,
+  email_personal varchar(50) DEFAULT NULL,
+  address_home varchar(255) DEFAULT NULL,
+  address_dorm_building varchar(20) DEFAULT NULL,
+  address_dorm_room varchar(20) DEFAULT NULL,
+  phone_cell varchar(20) DEFAULT NULL,
+  phone_shortnumber varchar(20) DEFAULT NULL,
+  phone_office varchar(20) DEFAULT NULL,
+  homepage varchar(255) DEFAULT NULL, 
+ -->
+<hibernate-mapping>
+    <class name="edu.stu.user.bean.UserContact" table="stu_usercontact">
+        <id name="id" type="long">
+            <column name="id" length="50" />
+            <generator class="assigned" />
+        </id>
+        <property name="userId" type="int">
+            <column name="user_id" precision="11" scale="0" />
+        </property>
+        <property name="stuEmail" type="string">
+            <column name="email_stu" length="50" not-null="true" />
+        </property>
+        <property name="personalEmail" type="string">
+            <column name="email_personal" length="50" />
+        </property>
+        <property name="homeAddress" type="string">
+            <column name="address_home" length="255" />
+        </property>
+        <property name="dormBuildingAddress" type="string">
+            <column name="address_dorm_building" length="50"  />
+        </property>
+        <property name="dormRoom" type="string">
+            <column name="address_dorm_room" length="50"  />
+        </property>
+          <property name="mobile" type="string">
+            <column name="phone_cell" length="50"  />
+        </property>
+        <property name="phoneShortnumber" type="string">
+            <column name="phone_shortnumber"  length="50" />
+        </property>
+        <property name="officePhone" type="string">
+            <column name="phone_office" length="50"  />
+        </property>       
+        <property name="homePage" type="string">
+            <column name="homepage" length="255"/>
+        </property>
+    </class>
+</hibernate-mapping>

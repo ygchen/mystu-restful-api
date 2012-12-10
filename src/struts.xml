@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/*
+ * $Id: struts-plugin.xml 722219 2008-12-01 20:41:26Z musachy $
+ *
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+-->
+
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <constant name="struts.devMode" value="true" />
+ 	<constant name="struts.action.extension" value="xhtml,,xml,json,action" />
+ 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+  	<bean type="org.apache.struts2.dispatcher.mapper.ActionMapper" name="stuActionMapper" class="edu.stu.struts.StuActionMapper"/>     
+    <constant name="struts.mapper.class" value="stuActionMapper" />
+    
+    <!-- restful api required-->
+    <bean type="org.apache.struts2.convention.ResultMapBuilder" name="stuResultMapBuilder" class="edu.stu.struts.StuResultMapBuilder"/>
+    <constant name="struts.convention.resultMapBuilder" value="stuResultMapBuilder"/>    
+    <constant name="struts.convention.action.suffix" value="Controller"/>
+    <constant name="struts.convention.action.mapAllMatches" value="true"/>
+    <constant name="struts.convention.default.parent.package" value="rest-default"/>
+    <constant name="struts.rest.content.restrictToGET" value="false"/>
+
+    <constant name="struts.convention.package.locators" value="restful"/>
+    <constant name="struts.mapper.idParameterName" value="userId"/>
+          
+    <!-- legecy struts  -->
+    <!--constant name="struts.action.extension" value=""/-->
+    <constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	<constant name="struts.tag.altSyntax" value="true" />
+	<constant name="struts.multipart.maxSize" value="1500000" />
+	<constant name="struts.objectFactory" value="spring" />
+	
+	<package name="legacy-api" namespace="/legacy" extends="struts-default">
+	    
+	    <action name="validateUser" class="edu.stu.user.action.ValidateUser">
+	        <result name="json">/WEB-INF/content/legacy/jsonp.jsp</result>
+	    </action>	
+	    
+		<action name="uploadLogo"  class="edu.stu.user.action.UploadLogoOrCover" method="uploadLogo">			
+            <interceptor-ref name="fileUpload">
+    			<!-- 配置允许上传的文件类型 --> 
+                <param name="allowedTypes">application/octet-stream,image/bmp,image/jpg,image/png,image/x-png,image/gif,image/jpeg,image/pjpeg,application/x-png,application/x-jpg,application/x-bmp</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"/>
+            <result>/WEB-INF/content/legacy/upload-success.jsp</result>            
+		</action>
+		
+		<action name="uploadCover" class="edu.stu.user.action.UploadLogoOrCover" method="uploadCover">			
+            <interceptor-ref name="fileUpload">
+    			<!-- 配置允许上传的文件类型 --> 
+                <param name="allowedTypes">application/octet-stream,image/bmp,image/jpg,image/png,image/x-png,image/gif,image/jpeg,image/pjpeg,application/x-png,application/x-jpg,application/x-bmp</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"/>
+             <result>/WEB-INF/content/legacy/upload-success.jsp</result>          
+		</action>
+		
+	</package>
+</struts>

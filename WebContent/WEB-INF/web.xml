@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+  version="3.0">
+  <display-name>Struts 2 Rest Example</display-name>
+
+  	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:/conf/springs.xml</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+  
+	<filter>
+		<filter-name>disableJspFilter</filter-name>
+		<filter-class>edu.stu.generic.web.DisableJspFilter</filter-class>		
+	</filter>
+	<filter-mapping>
+		<filter-name>disableJspFilter</filter-name>
+		<url-pattern>/logo/*</url-pattern>
+	</filter-mapping>
+		
+	<filter>
+		<filter-name>casCookieFilter</filter-name>
+		<filter-class>edu.stu.user.filter.CasCookieFilter</filter-class>		
+	</filter>
+	<filter-mapping>
+		<filter-name>casCookieFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+  		<filter-name>CAS Authentication Filter</filter-name>
+  		<filter-class>org.jasig.cas.client.authentication.AuthenticationFilter</filter-class>
+  		<init-param>
+    		<param-name>casServerLoginUrl</param-name>
+    		<param-value>https://sso.stu.edu.cn/login</param-value>
+  		</init-param>
+  		<init-param>
+	    	<param-name>serverName</param-name>
+	    	<param-value>http://my.stu.edu.cn/</param-value>
+	  	</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CAS Authentication Filter</filter-name>
+		<url-pattern>/legacy/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>CAS Authentication Filter</filter-name>
+		<url-pattern>/rest/*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+	  <filter-name>CAS Validation Filter</filter-name>
+	  <filter-class>edu.stu.user.filter.StuCasTicketValidationFilter</filter-class>
+	  <init-param>
+	    <param-name>casServerUrlPrefix</param-name>
+	    <param-value>https://sso.stu.edu.cn</param-value>
+	  </init-param>
+	  <init-param>
+	    <param-name>serverName</param-name>
+	    <param-value>http://my.stu.edu.cn/</param-value>
+	  </init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CAS Validation Filter</filter-name>
+		<url-pattern>/legacy/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>CAS Validation Filter</filter-name>
+		<url-pattern>/rest/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+	  <filter-name>CAS HttpServletRequest Wrapper Filter</filter-name>
+	  <filter-class>org.jasig.cas.client.util.HttpServletRequestWrapperFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>CAS HttpServletRequest Wrapper Filter</filter-name>
+		<url-pattern>/legacy/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>CAS HttpServletRequest Wrapper Filter</filter-name>
+		<url-pattern>/rest/*</url-pattern>
+	</filter-mapping>
+
+	
+	<filter>
+	  <filter-name>CAS Assertion Thread Local Filter</filter-name>
+	  <filter-class>org.jasig.cas.client.util.AssertionThreadLocalFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>CAS Assertion Thread Local Filter</filter-name>
+		<url-pattern>/legacy/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>CAS Assertion Thread Local Filter</filter-name>
+		<url-pattern>/rest/*</url-pattern>
+	</filter-mapping>
+
+
+  <!-- Filters -->
+  <!-- START SNIPPET: filter -->
+    <filter>
+        <filter-name>action2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+    <!-- END SNIPPET: filter -->
+
+	<filter-mapping>
+		<filter-name>action2</filter-name>
+		<url-pattern>/legacy/*</url-pattern>
+	</filter-mapping>
+	
+    <filter-mapping>
+        <filter-name>action2</filter-name>
+        <url-pattern>/rest/*</url-pattern>
+    </filter-mapping>
+
+    <!-- Welcome file lists -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+</web-app>
