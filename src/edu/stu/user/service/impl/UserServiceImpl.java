@@ -19,12 +19,29 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;	
 	private StaticFileService staticFileService;
 	private String defaultCoverFolder;
+	private int maxUserCustomedCover=5;
+	private int maxUserStatus=5;
 	
 	public void setStaticFileService(StaticFileService staticFileService) {
 		this.staticFileService = staticFileService;
 	}
 	
 	
+	
+
+	public void setMaxUserStatus(int maxUserStatus) {
+		this.maxUserStatus = maxUserStatus;
+	}
+
+
+
+
+	public void setMaxUserCustomedCover(int maxUserCustomedCover) {
+		this.maxUserCustomedCover = maxUserCustomedCover;
+	}
+
+
+
 
 	public void setDefaultCoverFolder(String defautlCoverFolderPath) {
 		this.defaultCoverFolder = defautlCoverFolderPath;
@@ -59,7 +76,7 @@ public class UserServiceImpl implements UserService {
 			uc.setUrl(coverUrl);
 			uc.setUserId(userId);			
 			this.userDao.insert(uc);
-			if(list.size()>4)
+			if(list.size()>maxUserCustomedCover)
 			{
 				this.userDao.removeUserCover(list.get(list.size()-1));
 				//删除文件
@@ -102,7 +119,7 @@ public class UserServiceImpl implements UserService {
 			us.setStatus(status);
 			us.setUserId(userId);			
 			this.userDao.insert(us);
-			if(list.size()>4)
+			if(list.size()>maxUserStatus)
 			{
 				this.userDao.removeUserStatus(list.get(list.size()-1));
 			}

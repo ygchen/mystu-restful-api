@@ -33,7 +33,7 @@ public class UserCoverController extends UserLogoController {
 	
 	public String list()
 	{
-		this.model=this.getUserService().getUserCovers(getUserId(), 5);
+		this.model=this.getUserService().getUserCovers(getUserId(), 10);
 		return null;
 	}
 	

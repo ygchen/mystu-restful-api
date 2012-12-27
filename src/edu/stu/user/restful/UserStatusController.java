@@ -42,7 +42,7 @@ public class UserStatusController implements ModelDriven<Object> {
 	}
 	
 	public String update()
-	{		
+	{				
 		this.userService.updateUserStatus(userId, ((UserStatus)model).getStatus());
 		this.model=new ReturnData();
 		

@@ -96,15 +96,18 @@ public class ImageUtils
   {
 //	  System.err.println(Integer.toHexString(new Color(188,188,122,210).getRGB()));
 //	  System.err.println(Integer.toHexString(new Color(188,188,122).getRGB()));
-	  /*BufferedImage img=scaleAndCropAndAddTransparencyToLeftRightSideFromFile("e:/test2.jpg",900,800, 0, 0, 800, 300, 200);
-	  File temp=new File("e:/test2.png");
+
+/*	  BufferedImage img=scaleAndCropAndAddTransparencyToLeftRightSideFromFile("f:/test3.jpg",1400, 1050, 150, 390, 1100, 226, 200);
+	  File temp=new File("f:/test2.png");
 		FileOutputStream fout=new FileOutputStream(temp);
 		ImageIO.write(img, "png", fout);
 		fout.flush();
-		fout.close();*/
+		fout.close();
+*/
 	  
+	  System.err.println(Integer.parseInt("12.3334"));
 //	  scaleAndCropImageFile("F:/test3.jpg", 0, 0, 0, 0, 142,142);
-	  rotate("f:/cover_image.png", 90,"f:/aa.png");
+//	  rotate("f:/cover_image.png", 90,"f:/aa.png");
 		
   }
   
@@ -173,7 +176,7 @@ public class ImageUtils
     System.out.println(right * middle);
     System.out.println(right * bottom);*/
 	  
-	  generateThumb("e:/", new File("f:/test.jpg"), 100, 100, "/test_100x100.jpg");
+//	  generateThumb("e:/", new File("f:/test.jpg"), 100, 100, "/test_100x100.jpg");
   }
 
   public static BufferedImage createThumb(BufferedImage srcImg, int w, int h)

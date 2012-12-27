@@ -38,7 +38,7 @@
     <constant name="struts.convention.resultMapBuilder" value="stuResultMapBuilder"/>    
     <constant name="struts.convention.action.suffix" value="Controller"/>
     <constant name="struts.convention.action.mapAllMatches" value="true"/>
-    <constant name="struts.convention.default.parent.package" value="rest-default"/>
+    <constant name="struts.convention.default.parent.package" value="rest-api"/>
     <constant name="struts.rest.content.restrictToGET" value="false"/>
 
     <constant name="struts.convention.package.locators" value="restful"/>
@@ -50,6 +50,49 @@
 	<constant name="struts.tag.altSyntax" value="true" />
 	<constant name="struts.multipart.maxSize" value="1500000" />
 	<constant name="struts.objectFactory" value="spring" />
+		
+	<package name="rest-api" extends="rest-default">
+	    <interceptors>
+			<interceptor name="exception" class="edu.stu.struts.ExceptionMappingInterceptor"/>
+			
+			<interceptor-stack name="stuRestDefaultStack">
+			    <interceptor-ref name="exception" />
+			     <interceptor-ref name="alias"/>
+                <interceptor-ref name="servletConfig"/>
+                <interceptor-ref name="messages">
+                    <param name="operationMode">AUTOMATIC</param>
+                </interceptor-ref>
+                <interceptor-ref name="prepare"/>
+                <interceptor-ref name="i18n"/>
+                <interceptor-ref name="chain"/>
+                <!-- for dev only
+                interceptor-ref name="debugging"/>
+                <interceptor-ref name="profiling"/-->
+                <interceptor-ref name="actionMappingParams"/>
+                <interceptor-ref name="scopedModelDriven"/>
+                <interceptor-ref name="modelDriven">
+                    <param name="refreshModelBeforeResult">true</param>
+                </interceptor-ref>
+                <interceptor-ref name="checkbox"/>
+                <interceptor-ref name="staticParams"/>
+                <interceptor-ref name="params">
+                  <param name="excludeParams">dojo\..*</param>
+                </interceptor-ref>
+                <interceptor-ref name="rest" />
+                <interceptor-ref name="conversionError"/>                
+                <interceptor-ref name="restWorkflow">
+                    <param name="excludeMethods">input,back,cancel,browse,index,show,edit,editNew</param>
+                </interceptor-ref>			    	    
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref  name="stuRestDefaultStack"/>
+	    <!--global-results>
+            <result name="Exception">/exception.jsp</result>
+        </global-results>
+	    <global-exception-mappings>
+	        <exception-mapping result="Exception" exception="java.lang.Exception"/>
+	    </global-exception-mappings-->
+	</package>
 	
 	<package name="legacy-api" namespace="/legacy" extends="struts-default">
 	    
