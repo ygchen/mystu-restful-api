@@ -27,7 +27,7 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-    <constant name="struts.devMode" value="true" />
+    <constant name="struts.devMode" value="false" />
  	<constant name="struts.action.extension" value="xhtml,,xml,json,action" />
  	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
   	<bean type="org.apache.struts2.dispatcher.mapper.ActionMapper" name="stuActionMapper" class="edu.stu.struts.StuActionMapper"/>     
@@ -48,7 +48,7 @@
     <!--constant name="struts.action.extension" value=""/-->
     <constant name="struts.ognl.allowStaticMethodAccess" value="true" />
 	<constant name="struts.tag.altSyntax" value="true" />
-	<constant name="struts.multipart.maxSize" value="1500000" />
+	<constant name="struts.multipart.maxSize" value="5000000" />
 	<constant name="struts.objectFactory" value="spring" />
 		
 	<package name="rest-api" extends="rest-default">
