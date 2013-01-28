@@ -1,9 +1,11 @@
 package edu.stu.user.restful;
 
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ResultPath;
 import org.apache.struts2.rest.DefaultHttpHeaders;
 import org.apache.struts2.rest.HttpHeaders;
+import org.jasig.cas.client.authentication.AttributePrincipal;
 
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.ValidationAwareSupport;
@@ -37,6 +39,52 @@ public class UserContactController extends ValidationAwareSupport implements
 	
     public HttpHeaders show() {
     	model=userService.getUserContact(userId);
+    	if(this.userId!=getSessionUserId())//非本人，只能看公开的
+    	{
+    		UserContact ct=(UserContact) model;
+    		if(!ct.isStuEmailVisibled())
+    		{
+    			ct.setStuEmail(null);
+    		}
+    		
+    		if(!ct.isAddressVisibled())
+    		{
+    			ct.setDormBuildingAddress(null);
+    			ct.setDormRoom(null);
+    		}
+    		
+    		if(!ct.isHomeAddressVisibled())
+    		{
+    			ct.setHomeAddress(null);
+    		}
+    		
+    		if(!ct.isHomePageVisibled())
+    		{
+    			ct.setHomePage(null);
+    		}
+    		
+    		if(!ct.isMobileVisibled())
+    		{
+    			ct.setMobile(null);
+    		}
+    		
+    		if(!ct.isOfficePhoneVisibled())
+    		{
+    			ct.setOfficePhone(null);
+    		}
+    		
+    		if(!ct.isPersonalEmailVisibled())
+    		{
+    			ct.setPersonalEmail(null);
+    		}
+    		
+    		if(!ct.isPhoneShortnumberVisibled())
+    		{
+    			ct.setPhoneShortnumber(null);
+    		}
+    	}
+    	
+    	
         return new DefaultHttpHeaders("show");
     }
     
@@ -48,8 +96,15 @@ public class UserContactController extends ValidationAwareSupport implements
     
     public String update()
     {
-    	this.userService.update((UserContact)this.model);    	  
-    	this.model=new ReturnData();
+    	if(this.userId!=getSessionUserId())
+		{
+			this.model= new ReturnData(false,"Illegal access!!");//试图修改别人的
+		}
+    	else
+    	{
+    		this.userService.update((UserContact)this.model);    	  
+    		this.model=new ReturnData();
+    	}
     	return null;
     }
 
@@ -63,4 +118,9 @@ public class UserContactController extends ValidationAwareSupport implements
             .disableCaching();
     } 
     
+    protected int getSessionUserId()
+	{
+		AttributePrincipal p=(AttributePrincipal) ServletActionContext.getRequest().getUserPrincipal();
+		return new Integer(p.getAttributes().get("vid").toString());
+	}
 }

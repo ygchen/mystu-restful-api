@@ -1,5 +1,8 @@
 package edu.stu.user.restful;
 
+import org.apache.struts2.ServletActionContext;
+import org.jasig.cas.client.authentication.AttributePrincipal;
+
 import com.opensymphony.xwork2.ModelDriven;
 
 import edu.stu.user.service.UserService;
@@ -43,8 +46,15 @@ public class UserStatusController implements ModelDriven<Object> {
 	
 	public String update()
 	{				
-		this.userService.updateUserStatus(userId, ((UserStatus)model).getStatus());
-		this.model=new ReturnData();
+		if(this.userId!=getSessionUserId())
+		{
+			this.model=new ReturnData(false,"Illegal access!!");//试图修改别人的
+		}
+		else
+		{
+			this.userService.updateUserStatus(userId, ((UserStatus)model).getStatus());
+			this.model=new ReturnData();
+		}
 		
 		return null;
 	}
@@ -68,5 +78,11 @@ public class UserStatusController implements ModelDriven<Object> {
 			this.status = status;
 		}
 		
+	}
+	
+	protected int getSessionUserId()
+	{
+		AttributePrincipal p=(AttributePrincipal) ServletActionContext.getRequest().getUserPrincipal();
+		return new Integer(p.getAttributes().get("vid").toString());
 	}
 }

@@ -4,10 +4,12 @@ import java.util.List;
 
 import edu.stu.user.bean.UserContact;
 import edu.stu.user.bean.UserCover;
+import edu.stu.user.bean.UserProfile;
 import edu.stu.user.bean.UserStatus;
 
 public interface UserDao {
-	UserContact findUser(String username);
+	UserProfile findUser(String username);
+//	UserContact findUser(String username);
 	UserContact get(int  userId);
 	void update(UserContact userContact);
 	void updateUserLogo(int userId,String url);

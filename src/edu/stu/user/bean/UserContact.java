@@ -19,6 +19,66 @@ public class UserContact implements java.io.Serializable {
 	private String phoneShortnumber;
 	private String officePhone;
 	private String homePage;
+	
+	private Boolean stuEmailVisibled=Boolean.FALSE;
+	private Boolean personalEmailVisibled=Boolean.FALSE;
+	private Boolean homeAddressVisibled=Boolean.FALSE;
+	private Boolean addressVisibled=Boolean.FALSE;
+	
+	private Boolean mobileVisibled=Boolean.FALSE;
+	private Boolean phoneShortnumberVisibled=Boolean.FALSE;
+	private Boolean officePhoneVisibled=Boolean.FALSE;
+	private Boolean homePageVisibled=Boolean.FALSE;	
+	
+	
+	public Boolean isStuEmailVisibled() {
+		return stuEmailVisibled!=null && stuEmailVisibled.booleanValue();
+	}
+	public void setStuEmailVisibled(Boolean stuEmailVisibled) {
+		this.stuEmailVisibled = stuEmailVisibled;
+	}
+	public Boolean isPersonalEmailVisibled() {
+		return personalEmailVisibled!=null && personalEmailVisibled.booleanValue();
+	}
+	public void setPersonalEmailVisibled(Boolean personalEmailVisibled) {
+		this.personalEmailVisibled = personalEmailVisibled;
+	}
+	public Boolean isHomeAddressVisibled() {
+		return homeAddressVisibled !=null && homeAddressVisibled.booleanValue();
+	}
+	public void setHomeAddressVisibled(Boolean homeAddressVisibled) {
+		this.homeAddressVisibled = homeAddressVisibled;
+	}
+	public Boolean isAddressVisibled() {
+		return addressVisibled !=null && addressVisibled.booleanValue();
+	}
+	public void setAddressVisibled(Boolean addressVisibled) {
+		this.addressVisibled = addressVisibled;
+	}
+	public Boolean isMobileVisibled() {
+		return mobileVisibled!=null && mobileVisibled.booleanValue();
+	}
+	public void setMobileVisibled(Boolean mobileVisibled) {
+		this.mobileVisibled = mobileVisibled;
+	}
+	public Boolean isPhoneShortnumberVisibled() {
+		return phoneShortnumberVisibled!=null && phoneShortnumberVisibled.booleanValue();
+	}
+	public void setPhoneShortnumberVisibled(Boolean phoneShortnumberVisibled) {
+		this.phoneShortnumberVisibled = phoneShortnumberVisibled;
+	}
+	public Boolean isOfficePhoneVisibled() {
+		return officePhoneVisibled!=null && officePhoneVisibled.booleanValue();
+	}
+	public void setOfficePhoneVisibled(Boolean officePhoneVisibled) {
+		this.officePhoneVisibled = officePhoneVisibled;
+	}
+	public Boolean isHomePageVisibled() {
+		return homePageVisibled!=null && homePageVisibled.booleanValue();
+	}
+	public void setHomePageVisibled(Boolean homePageVisibled) {
+		this.homePageVisibled = homePageVisibled;
+	}
 	public long getId() {
 		return id;
 	}

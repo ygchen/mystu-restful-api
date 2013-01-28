@@ -1,8 +1,5 @@
 package edu.stu.user.filter;
 
-import java.util.Iterator;
-import java.util.Map;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,8 +11,8 @@ public class StuCasTicketValidationFilter extends
 		Cas20ProxyReceivingTicketValidationFilter {
 	@Override
 	 protected void onSuccessfulValidation(final HttpServletRequest request, final HttpServletResponse response, final Assertion assertion) {
-			String key;
-			
+		/*
+			String key;			
 			Map<String,Object> attrs=assertion.getPrincipal().getAttributes();
 			Iterator<String> itr=attrs.keySet().iterator();
 			while(itr.hasNext())
@@ -23,16 +20,19 @@ public class StuCasTicketValidationFilter extends
 				key=itr.next();
 				
 				System.err.println(key+"="+attrs.get(key));
-			}
+			}*/
 			
 			Cookie[] cs=request.getCookies();
-			for(Cookie c:cs)
+			if(cs!=null)
 			{
-				if("CASTGC".equals(c.getName().toUpperCase()))
+				for(Cookie c:cs)
 				{
-					request.getSession().setAttribute("ticket",c.getValue());
-					break;
-				}				
+					if("CASTGC".equals(c.getName().toUpperCase()))
+					{
+						request.getSession().setAttribute("ticket",c.getValue());
+						break;
+					}				
+				}
 			}
 	  }
 }

@@ -27,15 +27,13 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-    <constant name="struts.devMode" value="false" />
+    <constant name="struts.devMode" value="true" />
  	<constant name="struts.action.extension" value="xhtml,,xml,json,action" />
  	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
   	<bean type="org.apache.struts2.dispatcher.mapper.ActionMapper" name="stuActionMapper" class="edu.stu.struts.StuActionMapper"/>     
     <constant name="struts.mapper.class" value="stuActionMapper" />
     
     <!-- restful api required-->
-    
-    
     <bean type="org.apache.struts2.convention.ResultMapBuilder" name="stuResultMapBuilder" class="edu.stu.struts.StuResultMapBuilder"/>
     <constant name="struts.convention.resultMapBuilder" value="stuResultMapBuilder"/>    
     <constant name="struts.convention.action.suffix" value="Controller"/>
@@ -52,7 +50,7 @@
     <!--constant name="struts.action.extension" value=""/-->
     <constant name="struts.ognl.allowStaticMethodAccess" value="true" />
 	<constant name="struts.tag.altSyntax" value="true" />
-	<constant name="struts.multipart.maxSize" value="5000000" />
+	<constant name="struts.multipart.maxSize" value="1500000" />
 	<constant name="struts.objectFactory" value="spring" />
 		
 	<package name="rest-api" extends="rest-default">
@@ -90,15 +88,10 @@
 			</interceptor-stack>
 		</interceptors>
 		<default-interceptor-ref  name="stuRestDefaultStack"/>
-	    <!-- global-results>
+	    <!--global-results>
             <result name="Exception">/exception.jsp</result>
-            <result name="success" type="json">  
-				<param name="excludeNullProperties">true</param>  
-			</result>  
-            
-        </global-results-->
-        
-	    <!-- global-exception-mappings>
+        </global-results>
+	    <global-exception-mappings>
 	        <exception-mapping result="Exception" exception="java.lang.Exception"/>
 	    </global-exception-mappings-->
 	</package>
@@ -111,7 +104,7 @@
 	    
 		<action name="uploadLogo"  class="edu.stu.user.action.UploadLogoOrCover" method="uploadLogo">			
             <interceptor-ref name="fileUpload">
-    			<!-- 配置允许上传的文件类型 --> 
+    			<!-- 配置允许上传的文件类圿--> 
                 <param name="allowedTypes">application/octet-stream,image/bmp,image/jpg,image/png,image/x-png,image/gif,image/jpeg,image/pjpeg,application/x-png,application/x-jpg,application/x-bmp</param>
             </interceptor-ref>
             <interceptor-ref name="defaultStack"/>
@@ -120,7 +113,7 @@
 		
 		<action name="uploadCover" class="edu.stu.user.action.UploadLogoOrCover" method="uploadCover">			
             <interceptor-ref name="fileUpload">
-    			<!-- 配置允许上传的文件类型 --> 
+    			<!-- 配置允许上传的文件类圿--> 
                 <param name="allowedTypes">application/octet-stream,image/bmp,image/jpg,image/png,image/x-png,image/gif,image/jpeg,image/pjpeg,application/x-png,application/x-jpg,application/x-bmp</param>
             </interceptor-ref>
             <interceptor-ref name="defaultStack"/>

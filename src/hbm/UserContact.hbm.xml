@@ -50,5 +50,31 @@ id bigint(20) NOT NULL AUTO_INCREMENT,
         <property name="homePage" type="string">
             <column name="homepage" length="255"/>
         </property>
+        
+        <property name="stuEmailVisibled" type="boolean">
+            <column name="email_stu_visibled" length="1" />
+        </property>
+        <property name="personalEmailVisibled" type="boolean">
+            <column name="email_personal_visibled" length="1" />
+        </property>
+        <property name="homeAddressVisibled" type="boolean">
+            <column name="address_home_visibled" length="1" />
+        </property>
+        <property name="addressVisibled" type="boolean">
+            <column name="address_visibled" length="1"  />
+        </property>
+
+          <property name="mobileVisibled" type="boolean">
+            <column name="phone_cell_visibled" length="1"  />
+        </property>
+        <property name="phoneShortnumberVisibled" type="boolean">
+            <column name="phone_shortnumber_visibled"  length="1" />
+        </property>
+        <property name="officePhoneVisibled" type="boolean">
+            <column name="phone_office_visibled" length="1"  />
+        </property>       
+        <property name="homePageVisibled" type="boolean">
+            <column name="homepage_visibled" length="1"/>
+        </property>
     </class>
 </hibernate-mapping>

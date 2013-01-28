@@ -14,7 +14,6 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.convention.ConventionConstants;
 import org.apache.struts2.convention.ConventionsService;
-import org.apache.struts2.convention.DefaultResultMapBuilder;
 import org.apache.struts2.convention.ReflectionTools;
 import org.apache.struts2.convention.ResultMapBuilder;
 import org.apache.struts2.convention.StringTools;

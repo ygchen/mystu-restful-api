@@ -10,6 +10,7 @@ import java.util.List;
 import edu.stu.generic.StaticFileService;
 import edu.stu.user.bean.UserContact;
 import edu.stu.user.bean.UserCover;
+import edu.stu.user.bean.UserProfile;
 import edu.stu.user.bean.UserStatus;
 import edu.stu.user.dao.UserDao;
 import edu.stu.user.service.UserService;
@@ -95,7 +96,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserContact getUser(String username) {
+	public UserProfile getUser(String username) {
 		
 		return this.userDao.findUser(username);
 	}

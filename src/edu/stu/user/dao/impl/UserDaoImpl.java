@@ -11,20 +11,21 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 
 import edu.stu.user.bean.UserContact;
 import edu.stu.user.bean.UserCover;
+import edu.stu.user.bean.UserProfile;
 import edu.stu.user.bean.UserStatus;
 import edu.stu.user.dao.AbstractHibernateDao;
 import edu.stu.user.dao.UserDao;
 
 public class UserDaoImpl extends AbstractHibernateDao implements UserDao {
 
-	@Override
+/*	@Override
 	public UserContact findUser(String username) {	
 		List rows= this.find("from UserContact where upper(username)=upper(?)",username, 1);
 		if(rows.size()==0)
 			return null;
 		else
 			return (UserContact)rows.get(0);
-	}
+	}*/
 
 	@Override
 	public UserContact get(int userId) {
@@ -137,6 +138,20 @@ public class UserDaoImpl extends AbstractHibernateDao implements UserDao {
 	@Override
 	public void insert(UserStatus userStatus) {
 		this.getHibernateTemplate().save(userStatus);
+	}
+
+	@Override
+	public UserProfile findUser(String username) {
+		if(username.indexOf('@')<0)
+		{
+			username=username+"@stu.edu.cn";
+		}
+		
+		List users=this.find("select a from UserProfile a, UserContact b where a.userId=b.userId and b.stuEmail=?", username, 1);
+		if(users.size()==0)
+			return null;
+		else
+			return (UserProfile)users.get(0);
 	}
 	
 

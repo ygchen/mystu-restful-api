@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--
+	private String name;
+	private String nameEn;
+	private String coverImage;
+	private String profilePic;
+	private int userId;
+	private String school;
+	private int yearOfAttendance;//入学年分
+	private String status;//状态，已毕业，在校
+	private String postion;//本科，研究生，博士
+ -->
+<hibernate-mapping>
+    <class name="edu.stu.user.bean.UserProfile" table="stu_userprofile">
+        <id name="id" type="long">
+            <column name="id" length="50" />
+            <generator class="assigned" />
+        </id>
+        <property name="userId" type="int">
+            <column name="user_id" precision="11" scale="0" />
+        </property>
+        <property name="name" type="string"/>
+            
+        <property name="nameEn" type="string">
+            <column name="name_en" length="255" />
+        </property>            
+        <property name="coverImage" type="string">
+            <column name="cover_image" length="255" />
+        </property>
+        <property name="profilePic" type="string">
+            <column name="profile_pic" length="255"  />
+        </property>
+        <property name="school" type="string"/>
+          
+          <property name="status" type="string"/>
+
+        <property name="position" type="string"/>
+       
+        <property name="yearOfAttendance" type="integer">
+            <column name="year_of_attendance" length="11"/>
+        </property>
+    </class>
+</hibernate-mapping>

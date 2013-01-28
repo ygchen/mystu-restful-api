@@ -1,0 +1,13 @@
+
+alter table stu_usercontact
+add (
+email_stu_visibled tinyint(1),
+email_personal_visibled tinyint(1),
+address_home_visibled tinyint(1), 
+address_visibled tinyint(1),
+phone_cell_visibled tinyint(1),
+phone_shortnumber_visibled tinyint(1), 
+phone_office_visibled tinyint(1) ,
+homepage_visibled tinyint(1)
+);
+ 
