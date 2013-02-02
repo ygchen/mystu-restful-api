@@ -46,7 +46,7 @@
     <constant name="struts.convention.package.locators" value="restful"/>
     <constant name="struts.mapper.idParameterName" value="userId"/>    
     <bean type="org.apache.struts2.rest.handler.ContentTypeHandler" name="stuJson" class="edu.stu.struts.JSONHandler" />
-    <constant name="struts.rest.handlerOverride.json" value="stuJson"/>
+    <!-- constant name="struts.rest.handlerOverride.json" value="stuJson"/-->
     
     <!-- legecy struts  -->
     <!--constant name="struts.action.extension" value=""/-->

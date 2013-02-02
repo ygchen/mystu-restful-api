@@ -20,64 +20,65 @@ public class UserContact implements java.io.Serializable {
 	private String officePhone;
 	private String homePage;
 	
-	private Boolean stuEmailVisibled=Boolean.FALSE;
-	private Boolean personalEmailVisibled=Boolean.FALSE;
-	private Boolean homeAddressVisibled=Boolean.FALSE;
-	private Boolean addressVisibled=Boolean.FALSE;
+	private boolean stuEmailVisible;
+	private boolean personalEmailVisible;
+	private boolean homeAddressVisible;
+	private boolean addressVisible;
 	
-	private Boolean mobileVisibled=Boolean.FALSE;
-	private Boolean phoneShortnumberVisibled=Boolean.FALSE;
-	private Boolean officePhoneVisibled=Boolean.FALSE;
-	private Boolean homePageVisibled=Boolean.FALSE;	
+	private boolean mobileVisible;
+	private boolean phoneShortnumberVisible;
+	private boolean officePhoneVisible;
+	private boolean homePageVisible;	
 	
 	
-	public Boolean isStuEmailVisibled() {
-		return stuEmailVisibled!=null && stuEmailVisibled.booleanValue();
+	
+	public boolean isStuEmailVisible() {
+		return stuEmailVisible;
 	}
-	public void setStuEmailVisibled(Boolean stuEmailVisibled) {
-		this.stuEmailVisibled = stuEmailVisibled;
+	public void setStuEmailVisible(boolean stuEmailVisible) {
+		this.stuEmailVisible = stuEmailVisible;
 	}
-	public Boolean isPersonalEmailVisibled() {
-		return personalEmailVisibled!=null && personalEmailVisibled.booleanValue();
+	public boolean isPersonalEmailVisible() {
+		return personalEmailVisible;
 	}
-	public void setPersonalEmailVisibled(Boolean personalEmailVisibled) {
-		this.personalEmailVisibled = personalEmailVisibled;
+	public void setPersonalEmailVisible(boolean personalEmailVisible) {
+		this.personalEmailVisible = personalEmailVisible;
 	}
-	public Boolean isHomeAddressVisibled() {
-		return homeAddressVisibled !=null && homeAddressVisibled.booleanValue();
+	public boolean isHomeAddressVisible() {
+		return homeAddressVisible;
 	}
-	public void setHomeAddressVisibled(Boolean homeAddressVisibled) {
-		this.homeAddressVisibled = homeAddressVisibled;
+	public void setHomeAddressVisible(boolean homeAddressVisible) {
+		this.homeAddressVisible = homeAddressVisible;
 	}
-	public Boolean isAddressVisibled() {
-		return addressVisibled !=null && addressVisibled.booleanValue();
+	public boolean isAddressVisible() {
+		return addressVisible;
 	}
-	public void setAddressVisibled(Boolean addressVisibled) {
-		this.addressVisibled = addressVisibled;
+	public void setAddressVisible(boolean addressVisible) {
+		this.addressVisible = addressVisible;
 	}
-	public Boolean isMobileVisibled() {
-		return mobileVisibled!=null && mobileVisibled.booleanValue();
+	public boolean isMobileVisible() {
+		return mobileVisible;
 	}
-	public void setMobileVisibled(Boolean mobileVisibled) {
-		this.mobileVisibled = mobileVisibled;
+	public void setMobileVisible(boolean mobileVisible) {
+		this.mobileVisible = mobileVisible;
 	}
-	public Boolean isPhoneShortnumberVisibled() {
-		return phoneShortnumberVisibled!=null && phoneShortnumberVisibled.booleanValue();
+	public boolean isPhoneShortnumberVisible() {
+		return phoneShortnumberVisible;
 	}
-	public void setPhoneShortnumberVisibled(Boolean phoneShortnumberVisibled) {
-		this.phoneShortnumberVisibled = phoneShortnumberVisibled;
+	public void setPhoneShortnumberVisible(boolean phoneShortnumberVisible) {
+		this.phoneShortnumberVisible = phoneShortnumberVisible;
 	}
-	public Boolean isOfficePhoneVisibled() {
-		return officePhoneVisibled!=null && officePhoneVisibled.booleanValue();
+	public boolean isOfficePhoneVisible() {
+		return officePhoneVisible;
 	}
-	public void setOfficePhoneVisibled(Boolean officePhoneVisibled) {
-		this.officePhoneVisibled = officePhoneVisibled;
+	public void setOfficePhoneVisible(boolean officePhoneVisible) {
+		this.officePhoneVisible = officePhoneVisible;
 	}
-	public Boolean isHomePageVisibled() {
-		return homePageVisibled!=null && homePageVisibled.booleanValue();
+	public boolean isHomePageVisible() {
+		return homePageVisible;
 	}
-	public void setHomePageVisibled(Boolean homePageVisibled) {
-		this.homePageVisibled = homePageVisibled;
+	public void setHomePageVisible(boolean homePageVisible) {
+		this.homePageVisible = homePageVisible;
 	}
 	public long getId() {
 		return id;

@@ -51,29 +51,29 @@ id bigint(20) NOT NULL AUTO_INCREMENT,
             <column name="homepage" length="255"/>
         </property>
         
-        <property name="stuEmailVisibled" type="boolean">
+        <property name="stuEmailVisible" type="boolean">
             <column name="email_stu_visibled" length="1" />
         </property>
-        <property name="personalEmailVisibled" type="boolean">
+        <property name="personalEmailVisible" type="boolean">
             <column name="email_personal_visibled" length="1" />
         </property>
-        <property name="homeAddressVisibled" type="boolean">
+        <property name="homeAddressVisible" type="boolean">
             <column name="address_home_visibled" length="1" />
         </property>
-        <property name="addressVisibled" type="boolean">
+        <property name="addressVisible" type="boolean">
             <column name="address_visibled" length="1"  />
         </property>
 
-          <property name="mobileVisibled" type="boolean">
+          <property name="mobileVisible" type="boolean">
             <column name="phone_cell_visibled" length="1"  />
         </property>
-        <property name="phoneShortnumberVisibled" type="boolean">
+        <property name="phoneShortnumberVisible" type="boolean">
             <column name="phone_shortnumber_visibled"  length="1" />
         </property>
-        <property name="officePhoneVisibled" type="boolean">
+        <property name="officePhoneVisible" type="boolean">
             <column name="phone_office_visibled" length="1"  />
         </property>       
-        <property name="homePageVisibled" type="boolean">
+        <property name="homePageVisible" type="boolean">
             <column name="homepage_visibled" length="1"/>
         </property>
     </class>

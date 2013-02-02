@@ -42,49 +42,48 @@ public class UserContactController extends ValidationAwareSupport implements
     	if(this.userId!=getSessionUserId())//非本人，只能看公开的
     	{
     		UserContact ct=(UserContact) model;
-    		if(!ct.isStuEmailVisibled())
+    		if(!ct.isStuEmailVisible())
     		{
     			ct.setStuEmail(null);
     		}
     		
-    		if(!ct.isAddressVisibled())
+    		if(!ct.isAddressVisible())
     		{
     			ct.setDormBuildingAddress(null);
     			ct.setDormRoom(null);
     		}
     		
-    		if(!ct.isHomeAddressVisibled())
+    		if(!ct.isHomeAddressVisible())
     		{
     			ct.setHomeAddress(null);
     		}
     		
-    		if(!ct.isHomePageVisibled())
+    		if(!ct.isHomePageVisible())
     		{
     			ct.setHomePage(null);
     		}
     		
-    		if(!ct.isMobileVisibled())
+    		if(!ct.isMobileVisible())
     		{
     			ct.setMobile(null);
     		}
     		
-    		if(!ct.isOfficePhoneVisibled())
+    		if(!ct.isOfficePhoneVisible())
     		{
     			ct.setOfficePhone(null);
     		}
     		
-    		if(!ct.isPersonalEmailVisibled())
+    		if(!ct.isPersonalEmailVisible())
     		{
     			ct.setPersonalEmail(null);
     		}
     		
-    		if(!ct.isPhoneShortnumberVisibled())
+    		if(!ct.isPhoneShortnumberVisible())
     		{
     			ct.setPhoneShortnumber(null);
     		}
     	}
-    	
-    	
+
         return new DefaultHttpHeaders("show");
     }
     

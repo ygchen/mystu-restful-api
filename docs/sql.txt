@@ -10,4 +10,15 @@ phone_shortnumber_visibled tinyint(1),
 phone_office_visibled tinyint(1) ,
 homepage_visibled tinyint(1)
 );
+ update stu_usercontact
+set
+email_stu_visibled=0,
+email_personal_visibled=0,
+address_home_visibled=0, 
+address_visibled=0,
+phone_cell_visibled=0,
+phone_shortnumber_visibled=0, 
+phone_office_visibled=0 ,
+homepage_visibled =0
+where 1=1
  

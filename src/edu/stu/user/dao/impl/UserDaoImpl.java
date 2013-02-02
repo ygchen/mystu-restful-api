@@ -39,6 +39,7 @@ public class UserDaoImpl extends AbstractHibernateDao implements UserDao {
 	@Override
 	public void update(UserContact userContact) {
 		UserContact old=this.get(userContact.getUserId());
+		String stuEmail=old.getStuEmail();
 		long id=old.getId();
 		try {
 			BeanUtils.copyProperties(old, userContact);
@@ -46,6 +47,7 @@ public class UserDaoImpl extends AbstractHibernateDao implements UserDao {
 			e.printStackTrace();
 		}
 		old.setId(id);
+		old.setStuEmail(stuEmail);
 		this.getHibernateTemplate().update(old);
 	}
 
